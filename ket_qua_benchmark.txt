@@ -1,0 +1,154 @@
+================================================================================
+KẾT QUẢ ĐÁNH GIÁ BENCHMARK TRUY XUẤT - LAB 07 (K4-L3A)
+Sinh viên thực hiện: Lại Bá Quân
+Chiến lược chia nhỏ: HEADING (HeadingChunker)
+Hệ thống AI sử dụng: Google Gemini (Embedding: gemini-embedding-001 | LLM: gemini-3.6-flash)
+Thư mục dữ liệu: data\scholarship
+================================================================================
+
+[1] Thống kê dữ liệu đã nạp (dựa trên sources.csv):
+- Tổng số tài liệu: 8
+- Tổng số chunks tạo ra: 166
+  + haui-financial-aid-scholarships: 28 chunks
+  + hust-financial-aid-for-students: 10 chunks
+  + hust-postgrad-research-scholarships: 8 chunks
+  + iuoss-jensen-huang-scholarship: 23 chunks
+  + lstf-dinh-thien-ly-scholarship: 43 chunks
+  + ued-postgrad-scholarships: 21 chunks
+  + usth-vallet-scholarship-2026: 22 chunks
+  + viasm-sigma-gold-scholarship: 11 chunks
+
+Đang tiến hành nhúng vector và xây dựng chỉ mục Knowledge Base...
+Xây dựng chỉ mục hoàn tất sau 74.08s.
+
+================================================================================
+[2] Chạy 5 câu hỏi đánh giá (Benchmark Queries):
+================================================================================
+
+--- CÂU HỎI 1 [TRA_SO_LIEU] ---
+Query: Mức học bổng dành cho sinh viên trúng tuyển ngành Vi mạch bán dẫn tại Đại học Công nghiệp Hà Nội là bao nhiêu tiền một tháng?
+Gold Doc: haui-financial-aid-scholarships
+Gold Answer: 4.200.000 đồng/tháng.
+Metadata Filter: None
+
+Top-3 Chunks tìm thấy:
+  1. Score=0.7956 | doc_id=haui-financial-aid-scholarships [ĐÚNG NGUỒN]
+     Nội dung: [### 4. Học bổng dành cho sinh viên các ngành kỹ thuật then chốt và công nghệ chiến lược]   - Ngành Vi mạch bán dẫn: **4.200.000 đồng/tháng*...
+  2. Score=0.7812 | doc_id=haui-financial-aid-scholarships [ĐÚNG NGUỒN]
+     Nội dung: ### 1. Học bổng HaUI  Căn cứ Quyết định số 725/QĐ-ĐHCN ngày 03/6/2024 và Quyết định số 356/QĐ-ĐHCN ngày 14/3/2026 của Hiệu trưởng Trường Đại...
+  3. Score=0.7802 | doc_id=haui-financial-aid-scholarships [ĐÚNG NGUỒN]
+     Nội dung: # Học bổng và hỗ trợ tài chính cho sinh viên - Đại học Công nghiệp Hà Nội  Trong quá trình học tập tại Đại học Công nghiệp Hà Nội, sinh viên...
+-> Điểm câu hỏi 1: 2/2 điểm
+
+-> Tác tử KnowledgeBaseAgent sinh câu trả lời:
+Mức học bổng dành cho sinh viên ngành Vi mạch bán dẫn tại Đại học Công nghiệp Hà Nội là **4.200.000 đồng/tháng** (với thời gian hưởng là 10 tháng/năm học) [1].
+
+
+--- CÂU HỎI 2 [HOI_DIEU_KIEN] ---
+Query: Để duy trì học bổng Đinh Thiện Lý, sinh viên cần đạt kết quả học tập (CGPA) tối thiểu là bao nhiêu nếu tính theo thang điểm 10?
+Gold Doc: lstf-dinh-thien-ly-scholarship
+Gold Answer: Điểm trung bình tích lũy (CGPA) từ 8.0 trở lên theo thang điểm 10.
+Metadata Filter: None
+
+Top-3 Chunks tìm thấy:
+  1. Score=0.8410 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: [### Điều kiện duy trì và tuân thủ] 1. ****Thành tích học tập**** – Duy trì kết quả học tập tốt, với điểm trung bình tích lũy *(CGPA)* từ **...
+  2. Score=0.7668 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: ### Điều kiện duy trì và tuân thủ  Để tiếp tục được hưởng học bổng, sinh viên phải đáp ứng đầy đủ các tiêu chuẩn về kết quả học tập, tham gi...
+  3. Score=0.7459 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: ### Mục tiêu  Học bổng Đinh Thiện Lý dành cho sinh viên đại học, do Quỹ Hỗ trợ cộng đồng Đinh Thiện Lý (sau đây gọi tắt là “Quỹ”) khởi xướng...
+-> Điểm câu hỏi 2: 2/2 điểm
+
+-> Tác tử KnowledgeBaseAgent sinh câu trả lời:
+[Lỗi gọi Gemini LLM: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}]
+
+
+--- CÂU HỎI 3 [HOI_QUY_TRINH] ---
+Query: Để Quỹ Đinh Thiện Lý thực hiện giải ngân thanh toán học bổng, phía nhà trường cần thực hiện quy trình gửi email xác nhận với những thông tin gì?
+Gold Doc: lstf-dinh-thien-ly-scholarship
+Gold Answer: Gửi văn bản chính thức gồm: (1) Bộ hồ sơ sinh viên, (2) Tổng số tiền học bổng, và (3) Thông tin tài khoản ngân hàng.
+Metadata Filter: None
+
+Top-3 Chunks tìm thấy:
+  1. Score=0.8144 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: ### Phương thức thanh toán  Để thực hiện việc thanh toán, nhà trường gửi văn bản chính thức *(có dấu mộc đỏ và chữ ký xác nhận của trường)* ...
+  2. Score=0.7651 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: [### Phương thức thanh toán] | | | | | --- | --- | --- | | **1** | **2** | **3** | | Bộ hồ sơ đầy đủ thông tin các sinh viên được cấp học bổ...
+  3. Score=0.7366 | doc_id=lstf-dinh-thien-ly-scholarship [ĐÚNG NGUỒN]
+     Nội dung: ### Phân bổ chỉ tiêu  Lời đầu tiên, Quỹ Hỗ trợ Cộng đồng Đinh Thiện Lý *(sau đây viết tắt là “Quỹ”)* xin chân thành cảm ơn Quý Nhà trường đã...
+-> Điểm câu hỏi 3: 2/2 điểm
+
+-> Tác tử KnowledgeBaseAgent sinh câu trả lời:
+Để Quỹ Đinh Thiện Lý thực hiện giải ngân thanh toán học bổng, phía nhà trường cần thực hiện quy trình gửi **văn bản chính thức (có dấu mộc đỏ và chữ ký xác nhận của trường)** đến địa chỉ email của Quỹ [1]. 
+
+Văn bản này phải bao gồm đầy đủ các thông tin sau:
+1. **Bộ hồ sơ đầy đủ thông tin các sinh viên được cấp học bổng**, bao gồm [2]:
+   - Họ và tên đầy đủ của sinh viên [2].
+   - Khoa và chuyên ngành [2].
+   - Tất cả các học phần đã đăng ký [2].
+   - Bảng chi tiết học phí [2].
+2. **Tổng số tiền học bổng** được cấp trong học kỳ đó [2].
+3. **Thông tin tài khoản ngân hàng chính thức của trường Đại học**, bao gồm [2]:
+   - Tên ngân hàng và chi nhánh [2].
+   - Tên tài khoản [2].
+   - Số tài khoản [2].
+
+
+--- CÂU HỎI 4 [LIET_KE] ---
+Query: Hãy liệt kê các mức phần trăm hỗ trợ trong chính sách miễn, giảm học phí theo Nghị định của Chính phủ đối với sinh viên?
+Gold Doc: hust-financial-aid-for-students
+Gold Answer: Có 3 mức tương ứng là: 100%, 70% và 50% học phí.
+Metadata Filter: None
+
+Top-3 Chunks tìm thấy:
+  1. Score=0.8546 | doc_id=hust-financial-aid-for-students [ĐÚNG NGUỒN]
+     Nội dung: ## 1. Miễn, giảm học phí cho sinh viên diện chế độ chính sách  Theo Nghị định của Chính phủ về chính sách miễn, giảm học phí, hỗ trợ chi phí...
+  2. Score=0.8263 | doc_id=haui-financial-aid-scholarships [KHÁC NGUỒN]
+     Nội dung: [### 1. Chính sách miễn giảm học phí] **Đối tượng và mức hỗ trợ:** - **Miễn 100% học phí:** Sinh viên là người có công với cách mạng hoặc là...
+  3. Score=0.7993 | doc_id=haui-financial-aid-scholarships [KHÁC NGUỒN]
+     Nội dung: ### 1. Chính sách miễn giảm học phí  Căn cứ Nghị định số 238/2025/NĐ-CP ngày 03/9/2025 của Chính phủ quy định về chính sách học phí, miễn, g...
+-> Điểm câu hỏi 4: 2/2 điểm
+
+-> Tác tử KnowledgeBaseAgent sinh câu trả lời:
+Theo Nghị định của Chính phủ về chính sách miễn, giảm học phí, các mức phần trăm hỗ trợ đối với sinh viên gồm 3 mức [1]:
+- 100% học phí [1], [2]
+- 70% học phí [1]
+- 50% học phí [1]
+
+
+--- CÂU HỎI 5 [METADATA_TRAP] ---
+Query: Tiêu chuẩn về kết quả học tập để sinh viên được nhận hỗ trợ 100% học phí là gì?
+Gold Doc: hust-financial-aid-for-students
+Gold Answer: Không có tiêu chuẩn về kết quả học tập, chỉ cần sinh viên thuộc diện chính sách theo quy định.
+Metadata Filter: {'audience': 'student'}
+
+Top-3 Chunks tìm thấy:
+  1. Score=0.7752 | doc_id=lstf-dinh-thien-ly-scholarship [KHÁC NGUỒN]
+     Nội dung: ### Giá trị, quyền lợi và thời hạn  **Giá trị học bổng và quyền lợi:**  1. Mỗi suất học bổng gồm 100% học phí thực tế đối với các học phần l...
+  2. Score=0.7738 | doc_id=hust-financial-aid-for-students [ĐÚNG NGUỒN]
+     Nội dung: ## 4. Học bổng khuyến khích học tập  Theo Nghị định của Chính phủ. Đối tượng: SV có kết quả học tập và rèn luyện tốt - Mức học bổng: 3 mức A...
+  3. Score=0.7672 | doc_id=haui-financial-aid-scholarships [KHÁC NGUỒN]
+     Nội dung: [### 1. Chính sách miễn giảm học phí] **Đối tượng và mức hỗ trợ:** - **Miễn 100% học phí:** Sinh viên là người có công với cách mạng hoặc là...
+-> Điểm câu hỏi 5: 1/2 điểm
+
+-> Tác tử KnowledgeBaseAgent sinh câu trả lời:
+Để được nhận học bổng khuyến khích học tập mức 100% học phí (Loại C), tiêu chuẩn về kết quả học tập của sinh viên là phải đạt **GPA từ 2.5** trở lên (đồng thời điểm rèn luyện đạt từ 65) [2].
+
+*Lưu ý: Ngữ cảnh từ nguồn [1] và [3] có đề cập đến các chính sách hỗ trợ/miễn 100% học phí khác nhưng tài liệu không nêu tiêu chuẩn về kết quả học tập cho các trường hợp này.*
+
+>>> THỰC HIỆN THỬ NGHIỆM A/B: CHẠY LẠI KHI KHÔNG CÓ METADATA FILTER <<<
+Kết quả khi KHÔNG lọc:
+  1. Score=0.7752 | doc_id=lstf-dinh-thien-ly-scholarship | audience=student
+     Nội dung: ### Giá trị, quyền lợi và thời hạn  **Giá trị học bổng và quyền lợi:**  1. Mỗi suất học bổng gồm 100% học phí thực tế đố...
+  2. Score=0.7738 | doc_id=hust-financial-aid-for-students | audience=student
+     Nội dung: ## 4. Học bổng khuyến khích học tập  Theo Nghị định của Chính phủ. Đối tượng: SV có kết quả học tập và rèn luyện tốt - M...
+  3. Score=0.7672 | doc_id=haui-financial-aid-scholarships | audience=student
+     Nội dung: [### 1. Chính sách miễn giảm học phí] **Đối tượng và mức hỗ trợ:** - **Miễn 100% học phí:** Sinh viên là người có công v...
+
+=> NHẬN XÉT A/B TEST:
+- Khi CÓ FILTER (audience=student): Hệ thống loại bỏ hoàn toàn các tài liệu quy định dành cho giảng viên/cán bộ (faculty/staff), chỉ tìm kiếm trong tài liệu sinh viên 'hust-financial-aid-for-students'.
+- Khi KHÔNG FILTER: Tài liệu 'hust-postgrad-research-scholarships' (audience=faculty) xuất hiện trong ứng viên và có thể gây nhiễu, khiến agent trả lời sai quyền lợi của đối tượng sinh viên!
+
+================================================================================
+TỔNG KẾT ĐIỂM CHẤT LƯỢNG TRUY XUẤT: 9/10 ĐIỂM
+================================================================================
