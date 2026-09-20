@@ -1,8 +1,8 @@
 # Báo Cáo Cá Nhân — Lab 7: Embedding & Vector Store
 
-**Họ tên:** Lại Bá Quân  
-**Nhóm:** Nhóm K4-L3A  
-**Ngày:** 19/09/2026  
+**Họ tên:** Lại Bá Quân — 2A202602495  
+**Nhóm:** L3A — Nhóm Học Bổng Đại Học  
+**Ngày:** 20/09/2026  
 
 > **Nộp 1 bản / sinh viên.** Phần nhóm (lựa chọn tài liệu, thiết kế chiến lược, bộ câu hỏi đánh giá, demo) nộp chung 1 bản trong `REPORT_NHOM.md`. Chi tiết thang điểm: `docs/SCORING.md`.
 
@@ -177,19 +177,20 @@ Chạy **5 câu hỏi đánh giá mới** trên mã nguồn cá nhân với chi�
   - **Khi KHÔNG FILTER:** Tài liệu của giảng viên/nghiên cứu sinh xuất hiện trong tập ứng viên, và cụm từ "tiêu chuẩn kết quả học tập 100% học phí" sẽ hút đúng chunk giảng viên lên đầu, dẫn đến câu trả lời sai hoàn toàn về mặt nghiệp vụ!
 
 **Điều hay nhất tôi học được từ thành viên khác / nhóm khác (qua demo):**
-> 1. **Sự vượt trội của AI Semantic Embedding so với Mock:** Khi chuyển từ `MockEmbedder` sang `GeminiEmbedder`, điểm tương đồng nhảy vọt từ ~0.25 (nhiễu ngẫu nhiên) lên ~0.85 (tương quan thực thụ), đưa độ chính xác từ 4/10 lên 9/10 điểm.
-> 2. **Tầm quan trọng của Metadata Pre-filtering:** Semantic Search chỉ tìm câu chữ giống nhau, còn Metadata Filter mới là "chiếc van an toàn" phân định đúng thẩm quyền đối tượng (`student` vs `faculty/staff`).
+> 1. **Sự vượt trội của AI Semantic Embedding so với Mock:** Đối chứng trực tiếp giữa lần chạy `MockEmbedder` của bạn Hải (chỉ đạt 4/10 điểm) với `GeminiEmbedder` của tôi (đạt 9/10 điểm) dù cùng dùng chung chiến lược `HeadingChunker` — cho thấy bộ nhúng ngữ nghĩa mới là yếu tố quyết định hàng đầu, đưa điểm số từ nhiễu ngẫu nhiên lên tương quan thực thụ.
+> 2. **Tầm quan trọng của Metadata Pre-filtering:** Semantic Search chỉ so khớp độ tương đồng bề mặt câu chữ, còn Metadata Filter mới là "chiếc van an toàn" phân định đúng thẩm quyền đối tượng (`student` vs `faculty/staff`), giải quyết dứt điểm bẫy metadata ở Câu hỏi 5 như nhóm đã thực nghiệm.
 > 3. **HeadingChunker giữ ngữ cảnh vượt trội:** Chia nhỏ theo tiêu đề Markdown kèm thẻ tiền tố `[Tiêu đề]` giúp mô hình ngôn ngữ lớn (LLM) không bị ảo giác, trích dẫn chính xác điều kiện đến từng con số.
+> 4. **Bài học về "đúng tài liệu, sai mảnh" và thiết kế thực nghiệm:** Qua thí nghiệm đối chứng của bạn Huy (thay đổi giữa Gemini 3.6 Flash và DeepSeek Chat điểm vẫn giữ nguyên 5/10) và góc nhìn chấm hai thang của bạn Giáp, tôi nhận ra nút thắt lớn nhất của RAG nằm ở chất lượng phân đoạn văn bản (chunking) chứ không phải do LLM; đồng thời hiểu được tầm quan trọng của việc kiểm soát biến số trong nghiên cứu nhóm.
 
 ---
 
 ## Tự Đánh Giá (Phần Cá Nhân)
 
-| Tiêu chí | Điểm tự đánh giá |
-|----------|:-----------------:|
-| Khởi động (Warm-up) | 5 / 5 |
-| Hướng tiếp cận của tôi (My Approach) | 10 / 10 |
-| Hoàn thiện code (Core Implementation — tests: 42/42) | 30 / 30 |
-| Dự đoán độ tương tự (Similarity Predictions) | 5 / 5 |
-| Kết quả truy xuất của tôi (Competition Results) | 10 / 10 |
-| **Tổng phần cá nhân** | **60 / 60** |
+| Tiêu chí | Điểm tự đánh giá | Căn cứ |
+|----------|:-----------------:|--------|
+| Khởi động (Warm-up) | 5 / 5 | Trả lời đầy đủ, chính xác lý thuyết Cosine/Euclidean và bài toán tính chunking |
+| Hướng tiếp cận của tôi (My Approach) | 10 / 10 | Giải thích toàn diện các chunker, EmbeddingStore và KnowledgeBaseAgent trong `src` |
+| Hoàn thiện code (Core Implementation) | 30 / 30 | Vượt qua 42/42 bài kiểm thử tự động (`pytest tests/ -v`) |
+| Dự đoán độ tương tự (Similarity Predictions) | 5 / 5 | Lập bảng 5 cặp câu, đối chứng thực nghiệm với MockEmbedder và giải thích bản chất |
+| Kết quả truy xuất của tôi (Competition Results) | 9 / 10 | Đạt 5/5 Top-3 hit; 4 câu top-1 (8đ) + 1 câu top-2 (1đ) = 9/10 điểm (khớp ghi nhận tại `REPORT_NHOM.md`) |
+| **Tổng phần cá nhân** | **59 / 60** | **Đạt 59/60 điểm** |
